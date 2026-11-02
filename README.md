@@ -177,6 +177,8 @@ Node package version, lockfile, and Python version together; the manifest starts
 at the upstream `v2.0.0` tag. Use squash merges so the merged PR title remains a
 conventional commit. The inherited Docker Hub and npm publishing jobs are
 disabled in this fork; a GitHub release does not publish those artifacts.
+This public fork uses a GitHub-hosted runner for Release Please because the
+Digital runner group does not allow public repositories.
 
 ## Support
 
