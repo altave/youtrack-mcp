@@ -168,6 +168,16 @@ Self-signed Server: `YOUTRACK_VERIFY_SSL=false`.
 - [Testing](tests/README.md)
 - CI: [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
+### Altave fork releases
+
+The Altave fork runs [Release Please](.github/workflows/release-please.yml) on
+pushes to `main`. Conventional commits are collected into a release PR. Merging
+that PR creates a version tag and GitHub release. The release PR updates the
+Node package version, lockfile, and Python version together; the manifest starts
+at the upstream `v2.0.0` tag. Use squash merges so the merged PR title remains a
+conventional commit. The inherited Docker Hub and npm publishing jobs are
+disabled in this fork; a GitHub release does not publish those artifacts.
+
 ## Support
 
 - [GitHub Issues](https://github.com/tonyzorin/youtrack-mcp/issues)

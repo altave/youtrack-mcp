@@ -1,0 +1,27 @@
+name: release-please
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  release-please:
+    runs-on: [self-hosted, harpia]
+    steps:
+      - name: Mint App token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.ALTAVE_DIGITAL_APP_ID }}
+          private-key: ${{ secrets.ALTAVE_DIGITAL_APP_PRIVATE_KEY }}
+
+      - name: Create release PR or GitHub release
+        uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
